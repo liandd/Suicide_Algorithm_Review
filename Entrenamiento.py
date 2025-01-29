@@ -42,7 +42,7 @@ class Entrenamiento:
     def entrenar_regresion_logistica(self):
         """Entrenar Regresión Logística usando los datos transformados por TF-IDF"""
         logistic_model = LogisticRegression(max_iter = 1000)
-        logistic_model.fit(self.X_train_tfdif, self.y_train)
+        logistic_model.fit(self.X_train_tfidf, self.y_train)
         
         return logistic_model
 
