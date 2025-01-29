@@ -52,7 +52,7 @@ def calcular_metricas(modelo, X_test, y_test, model_type="SVM"):
         X_test_tfidf = entrenamiento.vectorizer.transform(X_test)
         y_pred = modelo.predict(X_test_tfidf)
 
-     """Métricas"""
+    """Métricas"""
     precision = precision_score(y_test, y_pred, average='binary')
     recall = recall_score(y_test, y_pred, average='binary')
     f1 = f1_score(y_test, y_pred, average='binary')
