@@ -43,20 +43,20 @@ modelo_cnn = entrenamiento.entrenar_cnn(num_classes)
 def calcular_metricas(modelo, X_test, y_test, model_type="SVM"):
     if model_type in ["RNN", "CNN"]:
         X_test_seq = entrenamiento.tokenizer.texts_to_sequences(X_test)
-        x_test_seq = pad_sequences(X_test_seq, maxlen = entrenamiento.max_sequence_length)
+        X_test_seq = pad_sequences(X_test_seq, maxlen=entrenamiento.max_sequence_length)
         y_pred = modelo.predict(X_test_seq)
+        
         """Obtener la clase con mayor probabilidad"""
         y_pred = y_pred.argmax(axis=1)
     else:
         X_test_tfidf = entrenamiento.vectorizer.transform(X_test)
         y_pred = modelo.predict(X_test_tfidf)
-
+        
     """Métricas"""
     precision = precision_score(y_test, y_pred, average='binary')
     recall = recall_score(y_test, y_pred, average='binary')
     f1 = f1_score(y_test, y_pred, average='binary')
     accuracy = accuracy_score(y_test, y_pred)
-    
     return precision, recall, f1, accuracy
 
 # Posible, refactorizar en Prueba.py
