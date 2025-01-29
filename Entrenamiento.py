@@ -53,7 +53,7 @@ class Entrenamiento:
         
         return nb_model
 
-    def entrenar_decision_tree(self, max_depth = None)
+    def entrenar_decision_tree(self, max_depth = None):
         """Entrenar Árbol de Decisión usando los datos transformados por TD-IDF"""
         dt_model = DecisionTreeClassifier(max_depth = max_depth)
         dt_model.fit(self.X_train_tfidf, self.y_train)
