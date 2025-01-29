@@ -12,7 +12,7 @@ X = data['Ideas']
 y = data['Tag']
 
 test_size = float(input("[+] Ingresar tamaño para pruebas (ejemplo: 0.3 para el 30%)"))
-X_train_test, X_train_text, y_train, y_test = train_test_split(X, y, test_size=test_size)
+X_train_text, X_test_text, y_train, y_test = train_test_split(X, y, test_size=test_size)
 
 vectorizer = TfidfVectorizer()
 X_train = vectorizer.fit_transform(X_train_text)
