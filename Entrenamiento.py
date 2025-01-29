@@ -82,7 +82,7 @@ class Entrenamiento:
         model.add(Dense(64, activation="relu"))
         model.add(Dense(num_classes, activation="softmax"))
 
-        model.compila(optimizer=Adam(), loss="sparse_categorical_crossentropy", metrics=['accuracy'])
+        model.compile(optimizer=Adam(), loss="sparse_categorical_crossentropy", metrics=['accuracy'])
         model.fit(self.X_train_seq, self.y_train, epochs=epochs, batch_size=batch_size)
 
         return model
