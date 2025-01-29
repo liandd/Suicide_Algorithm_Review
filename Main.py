@@ -11,7 +11,7 @@ data = pd.read_csv("Libro1.csv", delimiter=';')
 X = data['Ideas']
 y = data['Tag']
 
-test_size = float(input("[+] Ingresar tamaño para pruebas (ejemplo: 0.3 para el 30%)"))
+test_size = float(input("Tamaño para test (ejemplo: 0.3 para 30%): "))
 X_train_text, X_test_text, y_train, y_test = train_test_split(X, y, test_size=test_size)
 
 vectorizer = TfidfVectorizer()
@@ -45,14 +45,14 @@ def calcular_metricas(modelo, X_test, y_test, model_type="SVM"):
         X_test_seq = entrenamiento.tokenizer.texts_to_sequences(X_test)
         X_test_seq = pad_sequences(X_test_seq, maxlen=entrenamiento.max_sequence_length)
         y_pred = modelo.predict(X_test_seq)
-        
+
         """Obtener la clase con mayor probabilidad"""
-        y_pred = y_pred.argmax(axis=1)
+        y_pred = y_pred.argmax(axis=1) 
     else:
         X_test_tfidf = entrenamiento.vectorizer.transform(X_test)
         y_pred = modelo.predict(X_test_tfidf)
-        
-    """Métricas"""
+
+     """Métricas"""
     precision = precision_score(y_test, y_pred, average='binary')
     recall = recall_score(y_test, y_pred, average='binary')
     f1 = f1_score(y_test, y_pred, average='binary')
@@ -63,11 +63,10 @@ def calcular_metricas(modelo, X_test, y_test, model_type="SVM"):
 """Métricas de SVM"""
 metricas = []
 kernels = ['linear', 'poly', 'rbf', 'sigmoid']
-
 for kernel, modelo in zip(kernels, modelos_svm):
     precision, recall, f1, accuracy = calcular_metricas(modelo, X_test_text, y_test)
-    metricas.append(['SVM (Kernel =' + kernel + ')', precision, recall, f1, accuracy])
-    
+    metricas.append(['SVM (kernel=' + kernel + ')', precision, recall, f1, accuracy])
+
 """Métricas de Regresión Logística"""
 precision, recall, f1, accuracy = calcular_metricas(modelo_logistica, X_test_text, y_test)
 metricas.append(['Regresión Logística', precision, recall, f1, accuracy])
@@ -93,10 +92,9 @@ tabla_metricas = pd.DataFrame(metricas, columns=['Modelo', 'Precision', 'Recall'
 print("Métricas de evaluación para el conjunto de prueba:\n")
 print(tabla_metricas)
 
-
 """Insertar una idea por teclado para determinar si es suicida"""
 while True:
-    input_text = input("Ingrese una idea (o 'salir' para terminar): ")
+    input_text = input("Ingrese una idea (o 'salir' para terminar):")
     if input_text.lower() == 'salir':
         break
 
