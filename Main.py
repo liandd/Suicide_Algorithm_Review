@@ -42,7 +42,7 @@ modelo_cnn = entrenamiento.entrenar_cnn(num_classes)
 # Posible, refactorizar está función en Entrenamiento.py o Prueba.py
 def calcular_metricas(modelo, X_test, y_test, model_type="SVM"):
     if model_type in ["RNN", "CNN"]:
-        X_test_seq = entrenamiento.tokenizer.text_to_sequences(X_test)
+        X_test_seq = entrenamiento.tokenizer.texts_to_sequences(X_test)
         x_test_seq = pad_sequences(X_test_seq, maxlen = entrenamiento.max_sequence_length)
         y_pred = modelo.predict(X_test_seq)
         """Obtener la clase con mayor probabilidad"""
