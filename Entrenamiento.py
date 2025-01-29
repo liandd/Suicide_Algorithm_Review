@@ -13,7 +13,7 @@ import numpy as np
 
 class Entrenamiento:
     
-    def __init__(self, X_train_test, y_train, max_words=5000, max_sequence_length=100):
+    def __init__(self, X_train_text, y_train, max_words=5000, max_sequence_length=100):
         # Para modelos tradicionales (SVM, Logística, etc)
         self.vectorizer = TfidfVectorizer()
         self.X_train_tfidf = self.vectorizer.fit_transform(X_train_test)
