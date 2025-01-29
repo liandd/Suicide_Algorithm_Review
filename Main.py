@@ -96,15 +96,12 @@ print(tabla_metricas)
 
 """Insertar una idea por teclado para determinar si es suicida"""
 while True:
-    input_text = input("[+] Ingrese una idea (o 'salir'): ")
+    input_text = input("Ingrese una idea (o 'salir' para terminar): ")
     if input_text.lower() == 'salir':
         break
 
-    """Transformar entrada"""
     input_vector = vectorizer.transform([input_text])
-
-    # Posible, refactorizar en Prueba.py
-   predicciones = []
+    predicciones = []
 
     for kernel, modelo in zip(kernels, modelos_svm):
         pred_svm = modelo.predict(input_vector)[0]
