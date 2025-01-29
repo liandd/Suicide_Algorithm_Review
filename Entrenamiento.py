@@ -16,15 +16,15 @@ class Entrenamiento:
     def __init__(self, X_train_text, y_train, max_words=5000, max_sequence_length=100):
         # Para modelos tradicionales (SVM, Logística, etc)
         self.vectorizer = TfidfVectorizer()
-        self.X_train_tfidf = self.vectorizer.fit_transform(X_train_test)
+        self.X_train_tfidf = self.vectorizer.fit_transform(X_train_text)
 
         # Variables para la RNN Y CNN
-        self.X_train_text = X_train_test # Para la RNN Y CNN
+        self.X_train_text = X_train_text # Para la RNN Y CNN
         self.max_words = max_words
         self.max_sequence_length = max_sequence_length
         self.tokenizer = Tokenizer(num_words = self.max_words)
         self.tokenizer.fit_on_texts(X_train_text)
-        self.X_train_seq = self.tokenizer.texts_to_sequences(X_train_test)
+        self.X_train_seq = self.tokenizer.texts_to_sequences(X_train_text)
         self.X_train_seq = pad_sequences(self.X_train_seq, maxlen = self.max_sequence_length)
 
         self.y_train = y_train
