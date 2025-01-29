@@ -67,7 +67,7 @@ kernels = ['linear', 'poly', 'rbf', 'sigmoid']
 for kernel, modelo in zip(kernels, modelos_svm):
     precision, recall, f1, accuracy = calcular_metricas(modelo, X_test_text, y_test)
     metricas.append(['SVM (Kernel =' + kernel + ')', precision, recall, f1, accuracy])
-
+    
 """Métricas de Regresión Logística"""
 precision, recall, f1, accuracy = calcular_metricas(modelo_logistica, X_test_text, y_test)
 metricas.append(['Regresión Logística', precision, recall, f1, accuracy])
