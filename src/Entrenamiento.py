@@ -4,11 +4,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import SimpleRNN, Dense, Embedding, Conv1D, MaxPooling1D, Flatten
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.preprocessing.text import Tokenizer # type: ignore
+from tensorflow.keras.preprocessing.sequence import pad_sequences # type: ignore
+from tensorflow.keras.models import Sequential # type: ignore
+from tensorflow.keras.layers import SimpleRNN, Dense, Embedding, Conv1D, MaxPooling1D, Flatten # type: ignore
+from tensorflow.keras.optimizers import Adam # type: ignore
 import numpy as np
 
 class Entrenamiento:

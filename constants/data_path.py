@@ -1,0 +1,1 @@
+MAX_PATH = {"data_path": "data/Libro1.csv"}
