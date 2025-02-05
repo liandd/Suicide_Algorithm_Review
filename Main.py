@@ -2,12 +2,13 @@
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 from sklearn.feature_extraction.text import TfidfVectorizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from Entrenamiento import Entrenamiento
+from tensorflow.keras.preprocessing.sequence import pad_sequences # type: ignore
+from src.Entrenamiento import Entrenamiento
 import pandas as pd
+from constants.data_path import MAX_PATH
 
 """Leer dataset"""
-data = pd.read_csv("Libro1.csv", delimiter=';')
+data = pd.read_csv(MAX_PATH["data_path"], delimiter=';')
 X = data['Ideas']
 y = data['Tag']
 
